@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>原神角色猜猜看</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>原神角色猜猜看</h1>
+
+  <div class="input-area">
+    <input id="guessInput" type="text" list="nameList"
+           placeholder="输入角色名字进行猜测" autocomplete="off" />
+    <datalist id="nameList"></datalist>
+    <button id="guessBtn">猜一下</button>
+  </div>
+
+  <!-- 结果区：表头 + 动态行 -->
+  <div id="table-area">
+    <div id="tableHeader" class="result-row header hidden">
+      <div>角色</div><div>武器</div><div>元素</div>
+      <div>突破属性</div><div>国家</div><div>UP大版本</div><div>定位</div>
+    </div>
+    <div id="results"></div>
+  </div>
+
+  <button id="restartBtn">重新开始</button>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+/********* 基础 *********/
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC",
+                "Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:#fafafa;
+    text-align:center;
+    color:#333;
+  }
+  h1{margin:32px 0 12px;font-size:36px;letter-spacing:2px}
+  
+  button{
+    cursor:pointer;padding:6px 16px;font-size:15px;
+    border:1px solid #aaa;border-radius:6px;background:#fff
+  }
+  
+  .input-area{margin:24px 0}
+  #guessInput{
+    width:240px;padding:6px 10px;font-size:16px;
+    border:1px solid #ccc;border-radius:6px
+  }
+  
+  /********* 网格 *******/
+  /* 让所有行（含表头）使用同一组 7 列，label 与数据才能精准对齐 */
+  .result-row{
+    display:grid !important;                       /* 覆盖 JS 设置的 flex */
+    grid-template-columns:120px 120px 80px 150px 90px 100px 150px;
+    gap:12px;margin:8px 0
+  }
+  .result-row div{
+    padding:8px 4px;font-size:15px;
+    border:1px solid #ccc;border-radius:10px;background:#fff;
+    box-sizing:border-box
+  }
+  
+  /* ---------- 表头 ---------- */
+  .header.hidden{display:none}             /* 初始隐藏，JS 会显示 */
+  .header div{font-weight:600}             /* 白底圆角依旧保留 */
+  
+  /********* 结果底色 *********/
+  .match{
+    background-color:#dff5d8 !important;   /* 低饱和度绿 */
+  }
+  .mismatch{
+    background-color:#ffe2e2 !important;   /* 低饱和度红 */
+  }
+  .partial{
+    background-color:#f0f0f0 !important;   /* 低饱和度灰 */
+  }
+  
+  /********* 其它 *********/
+  #table-area{margin:0 auto;width:max-content}
+  .hidden{display:none}
+  
