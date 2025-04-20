@@ -50,4 +50,80 @@ body{
   /********* 其它 *********/
   #table-area{margin:0 auto;width:max-content}
   .hidden{display:none}
+
+/************* 竖屏手机布局：所有列一起横向滚动 *************/
+@media (max-width: 768px) and (orientation: portrait) {
+
+  /* —— 输入区（同前，略） —— */
+
+  /* 1  横向滚动条放在 table-area，让 header 与猜测列一起移动 */
+  #table-area{
+    display:flex;                 /* header + n 结果列 */
+    gap:12px;
+    overflow-x:auto;              /* 横向滚动 */
+    padding-bottom:6px;
+    max-width:100%;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+  }
+  #table-area::-webkit-scrollbar{height:4px}
+  #table-area::-webkit-scrollbar-thumb{background:#c6c6c6;border-radius:2px}
+
+  /* 2  #results 只是横向排列每一次猜测列 */
+  #results{
+    display:flex;
+    gap:12px;
+  }
+
+  /* 3  每一列（包括 header 和所有猜测列）—— 关键修正 */
+  .result-row{
+    display:flex !important;           /* 强制改成 flex，覆盖桌面端的 grid */
+    flex-direction:column;             /* 7 个格竖排 */
+    min-width:120px;
+    gap:10px;
+    margin:0;
+    scroll-snap-align:start;           /* 滑动时列列对齐 */
+  }
+
+  /* 4  单元格统一样式 */
+  .result-row div{
+    width:100%;
+    text-align:center;
+    font-size:14px;
+    padding:6px 2px;
+    border:1px solid #d0d0d0;
+    border-radius:8px;
+    background:#fff;
+    box-sizing:border-box;
+  }
+
+  /* 5  header 只是粗体，不再 sticky，随列滚动 */
+  .header div{font-weight:600;background:#fff}
+
+  /* 6  匹配底色（低饱和） */
+  .match   {background:#dff5d8 !important}
+  .mismatch{background:#ffe2e2 !important}
+  .partial {background:#f0f0f0 !important}
+
+  /* 7  重新开始按钮触控友好 */
+  #restartBtn{
+    width:80%;max-width:260px;margin-top:16px;
+    padding:10px 0;font-size:16px
+  }
+}
+
+/* —— 通用提示样式 —— */
+#endMessage{
+  margin-top:16px;
+  font-size:18px;
+  font-weight:600;
+}
+
+/********* 竖屏手机下再微调 *********/
+@media (max-width: 768px) and (orientation: portrait){
+  #endMessage{margin-top:20px;font-size:16px}
+  #restartBtn{margin-top:14px}
+}
+
+
   

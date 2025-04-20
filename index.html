@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>原神角色猜猜看</title>
+  <title>原神角色猜猜呗</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -16,17 +16,22 @@
     <button id="guessBtn">猜一下</button>
   </div>
 
-  <!-- 结果区：表头 + 动态行 -->
+  <!-- 横向滚动区：标签列 + 动态猜测列 -->
   <div id="table-area">
-    <div id="tableHeader" class="result-row header hidden">
+    <!-- 标签列 -->
+    <div class="result-row header" id="tableHeader">
       <div>角色</div><div>武器</div><div>元素</div>
-      <div>突破属性</div><div>国家</div><div>UP大版本</div><div>定位</div>
+      <div>突破属性</div><div>国家</div><div>首次UP</div><div>定位</div>
     </div>
+
+    <!-- JS 会在这里 append 每一次猜测列 -->
     <div id="results"></div>
   </div>
 
+  <!-- <button id="restartBtn">重新开始</button> -->
+    <!-- 结果提示 & 重开按钮 -->
+  <div id="endMessage"></div>
   <button id="restartBtn">重新开始</button>
-
   <script src="script.js" defer></script>
 </body>
 </html>

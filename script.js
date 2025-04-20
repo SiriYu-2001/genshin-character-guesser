@@ -1163,16 +1163,38 @@ const characters = [
   /*****************************************************
    *  ⑤ 开局 / 重新开始
    *****************************************************/
+  // function startNewRound() {
+  //   answer = characters[Math.floor(Math.random() * characters.length)];
+  //   guessCount = 0;
+  //   console.log("本局答案：", answer["角色"]);   // 调试用
+  //   document.getElementById("results").innerHTML = "";
+  //   document.getElementById("tableHeader").style.display = "none";
+  //   document.getElementById("guessInput").value    = "";
+  //   document.getElementById("guessInput").disabled = false;
+  //   document.getElementById("guessBtn"  ).disabled = false;
+  // }
+  /* ---------- 开局 / 重新开始 ---------- */
   function startNewRound() {
-    answer = characters[Math.floor(Math.random() * characters.length)];
+    // 1. 随机抽取新的谜底角色
+    answer     = characters[Math.floor(Math.random() * characters.length)];
     guessCount = 0;
-    console.log("本局答案：", answer["角色"]);   // 调试用
+    console.log("本局答案：", answer["角色"]);   // 开发调试用，可删
+
+    // 2. 清空历史猜测列
     document.getElementById("results").innerHTML = "";
-    document.getElementById("tableHeader").style.display = "none";
-    document.getElementById("guessInput").value    = "";
-    document.getElementById("guessInput").disabled = false;
-    document.getElementById("guessBtn"  ).disabled = false;
+
+    // 3. 清空上一局的结果提示并移除颜色样式
+    const endBox = document.getElementById("endMessage");
+    endBox.innerHTML = "";
+    endBox.style.color = "";
+
+    // 4. 重置输入框和按钮
+    const input = document.getElementById("guessInput");
+    input.value    = "";
+    input.disabled = false;
+    document.getElementById("guessBtn").disabled = false;
   }
+
   
   /*****************************************************
    *  ⑥ 处理一次猜测
@@ -1235,17 +1257,27 @@ const characters = [
   /*****************************************************
    *  ⑧ 结束游戏（胜/负）
    *****************************************************/
+  // function endGame(isWin) {
+  //   document.getElementById("guessInput").disabled = true;
+  //   document.getElementById("guessBtn"  ).disabled = true;
+  
+  //   const msg = document.createElement("div");
+  //   msg.style.marginTop  = "10px";
+  //   msg.style.fontWeight = "bold";
+  //   msg.style.color      = isWin ? "green" : "red";
+  //   msg.textContent      = isWin
+  //     ? `🎉 恭喜猜对！答案：${answer["角色"]}`
+  //     : `😢 很遗憾，正确答案是：${answer["角色"]}`;
+  //   document.getElementById("results").appendChild(msg);
+  // }
   function endGame(isWin) {
     document.getElementById("guessInput").disabled = true;
     document.getElementById("guessBtn"  ).disabled = true;
   
-    const msg = document.createElement("div");
-    msg.style.marginTop  = "10px";
-    msg.style.fontWeight = "bold";
-    msg.style.color      = isWin ? "green" : "red";
-    msg.textContent      = isWin
-      ? `🎉 恭喜猜对！答案：${answer["角色"]}`
-      : `😢 很遗憾，正确答案是：${answer["角色"]}`;
-    document.getElementById("results").appendChild(msg);
+    const endBox = document.getElementById("endMessage");
+    endBox.textContent = (isWin
+      ? "🎉 恭喜你，正确答案是："
+      : "😢 很遗憾，正确答案是：") + answer["角色"];
+    endBox.style.color = isWin ? "green" : "red";
   }
   
